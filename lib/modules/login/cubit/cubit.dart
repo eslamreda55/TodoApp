@@ -32,6 +32,11 @@ class LoginCubit extends Cubit<LoginStates>
       });
   }
 
+  // void signOut()
+  // {
+  //   FirebaseAuth.instance.signOut();
+  // }
+
   IconData suffix= Icons.remove_red_eye_rounded;
 
   bool isPassword=true;

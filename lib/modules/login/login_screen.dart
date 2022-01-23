@@ -21,23 +21,15 @@ class LoginScreen extends StatelessWidget {
          child: BlocConsumer<LoginCubit , LoginStates>(
            listener: (context , state)
            {
-             if(state is LoginErrorStates)
-          {
-            showToast(
-              text: state.error, 
-              state: toastState.ERROR,
-              );
-          }else if(state is LoginSuccessStates)
-          {
-            CasheHelper.saveData(
-              key: 'uId', 
-              value:state.uId ,
-              ).then((value) 
-              {
-
-                navigateAndFinish(context, HomeLayout());
-              });
-            
+            if(state is LoginSuccessStates)
+            {
+              CasheHelper.saveData(
+                key: 'uId', 
+                value:state.uId ,
+                ).then((value) 
+                {
+                  navigateAndFinish(context, HomeLayout());
+                });
           }
            },
            builder: (context , state)=>

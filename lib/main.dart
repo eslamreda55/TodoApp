@@ -2,13 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/cubit/cubit.dart';
+import 'package:todo_app/layout/cubit/cubit.dart';
 import 'package:todo_app/layout/home_layout.dart';
 import 'package:todo_app/modules/login/login_screen.dart';
-import 'package:todo_app/modules/register/register_screen.dart';
-import 'package:todo_app/modules/task_test/task_test.dart';
 import 'package:todo_app/shared/bloc_observer.dart';
-import 'package:todo_app/shared/components/constants.dart';
+import 'package:todo_app/shared/components/constans.dart';
 import 'package:todo_app/shared/network/local/cash_helper.dart';
 
 
@@ -42,7 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit()..getUserData()..getTasks(),
+      create: (context) => AppCubit()..getUserData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Todo app',
@@ -54,6 +52,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 

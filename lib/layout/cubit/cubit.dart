@@ -2,14 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/cubit/states.dart';
+import 'package:todo_app/layout/cubit/states.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/models/user/user_model.dart';
 import 'package:todo_app/modules/archived_tasks/archived_tasks.dart';
 import 'package:todo_app/modules/done_tasks/done_tasks.dart';
 import 'package:todo_app/modules/new_tasks/new_tasks.dart';
-import 'package:todo_app/shared/components/constants.dart';
-//import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -122,8 +120,7 @@ class AppCubit extends Cubit<AppStates> {
   IconData fabIcon = Icons.edit;
 
   void changeBottomSheetState(
-      {@required bool isShow, @required IconData icon}) 
-  {
+      {@required bool isShow, @required IconData icon}) {
     isBottomSheetShown = isShow;
 
     fabIcon = icon;
@@ -131,8 +128,7 @@ class AppCubit extends Cubit<AppStates> {
     emit(AppChangeBottomSheetState());
   }
 
-
-  UserModel userModel;
+   UserModel userModel;
 
 void getUserData()
   {
@@ -219,64 +215,3 @@ void getTasks()
 
 }
 
-
-// TaskModel model;
-
-  // List<TaskModel> tasks = [];
-  // void getTasks({
-  //    String title,
-  //    String description,
-  //    String date,
-  //    String time,
-  //   //@required String uId,
-  // })
-  // {
-  //   TaskModel model = TaskModel(
-  //     title: title,
-  //     description: description,
-  //     date: date,
-  //     time: time,
-  //   );
-    
-  //   FirebaseFirestore.instance
-  //   .collection('tasks')
-  //   .doc()
-  //   .collection('sub-task')
-  //   .add(model.tomap())
-  //   .then((value) 
-  //   {
-  //     emit(GetTaskSuccessState());
-  //   }).catchError((error)
-  //   {
-  //     emit(GetTaskErrorState());
-  //   });
-  // }  
-
-  // void createTask({
-  //   @required String date,
-  //   @required String title,
-  //   @required String description,
-  //   @required String time,
-  // })
-  // {
-  //   TaskModel model = TaskModel(
-  //     date: date,
-  //     title: title,
-  //     description: description,
-  //     time: time,
-  //     uId: uId,
-  //   );
-    
-  //   FirebaseFirestore.instance
-  //   .collection('tasks')
-  //   .doc()
-  //   .collection('sub-task')
-  //   .add(model.tomap())
-  //   .then((value) 
-  //   {
-  //     emit(AppCreateTaskSuccessState());
-  //   }).catchError((error)
-  //   {
-  //     emit(AppCreateTaskErrorState());
-  //   });
-  // } 
